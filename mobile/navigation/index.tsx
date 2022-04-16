@@ -17,6 +17,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import HomeScreen from '../screens/HomeScreen';
 import DestifiScreen from "../screens/DestifiScreen";
 import LandingScreen from "../screens/LandingScreen";
+import LoginScreen from "../screens/LoginScreen";
 import UserProfileScreen from '../screens/UserProfileScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -101,6 +102,14 @@ function BottomTabNavigator() {
             options={{
                 title: 'Profile',
                 tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+            }}
+        />
+        <BottomTab.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+                title: 'Login',
+                tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
             }}
         />
     </BottomTab.Navigator>
