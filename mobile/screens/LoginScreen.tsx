@@ -11,9 +11,9 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Log In</Text>
-            <TextInput label="Username"
+            <TextInput style={styles.input} label="Username"
                        placeholder="Username" />
-            <TextInput label="Password"
+            <TextInput style={styles.input} label="Password"
                        secureTextEntry
                        right={<TextInput.Icon name="eye" />}/>
             <Button mode="contained" onPress={() => navigation.navigate("Home")}>log in</Button>
