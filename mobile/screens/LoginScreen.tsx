@@ -18,7 +18,6 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
                        right={<TextInput.Icon name="eye" />}/>
             <Button mode="contained" onPress={() => navigation.navigate("Home")}>log in</Button>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-            <EditScreenInfo path="/screens/LoginScreen.tsx" />
         </View>
     );
 }
@@ -30,6 +29,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    input: {
+        //flex: 1,
+        alignItems: 'flex-start',
+        width: 300,
+        height: 40,
+    },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
@@ -39,4 +44,4 @@ const styles = StyleSheet.create({
         height: 1,
         width: '80%',
     },
-});
+})
