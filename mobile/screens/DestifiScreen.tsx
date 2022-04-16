@@ -5,7 +5,7 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
-export default function DestifiScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function DestifiScreen({ navigation }: RootTabScreenProps<'Destifi'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Destifi</Text>

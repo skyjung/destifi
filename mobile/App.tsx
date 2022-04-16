@@ -3,6 +3,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import { Provider as PaperProvider } from 'react-native-paper';
 import * as Font from 'expo-font';
 import * as React from 'react';
 
@@ -20,8 +21,10 @@ export default function App() {
     fetchFonts();
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+          <PaperProvider>
+              <Navigation colorScheme={colorScheme} />
+              <StatusBar />
+          </PaperProvider>
       </SafeAreaProvider>
     );
   }
