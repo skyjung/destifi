@@ -4,9 +4,15 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.1",
+<<<<<<< HEAD
     "@rails/webpacker": "5.4.3",
     "esbuild": "^0.14.36",
     "webpack-cli": "^3.3.12"
+=======
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "esbuild": "^0.14.36",
+    "react-native": "^0.68.1"
+>>>>>>> 2933b6e9ba76cfa84c48825387f99d52633e9123
   },
   "scripts": {
     "build": "esbuild app/assets/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"

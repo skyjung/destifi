@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
@@ -5,4 +6,13 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/destifi.iml" filepath="$PROJECT_DIR$/.idea/destifi.iml" />
     </modules>
   </component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/LAHacks.iml" filepath="$PROJECT_DIR$/.idea/LAHacks.iml" />
+    </modules>
+  </component>
+>>>>>>> 2933b6e9ba76cfa84c48825387f99d52633e9123
 </project>
