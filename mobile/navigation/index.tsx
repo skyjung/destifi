@@ -107,6 +107,14 @@ function BottomTabNavigator() {
                 tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
             }}
         />
+        <BottomTab.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+                title: 'Login',
+                tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            }}
+        />
     </BottomTab.Navigator>
   );
 }
