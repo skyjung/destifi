@@ -11,7 +11,7 @@ export default function LandingScreen({ navigation }: RootTabScreenProps<'Landin
     return (
         <View style={styles.container}>
             <Headline>Destifi</Headline>
-            <Button mode="contained" onPress={() => navigation.navigate("Home")}>log in</Button>
+            <Button mode="contained" onPress={() => navigation.navigate("Login")}>log in</Button>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         </View>
     );
