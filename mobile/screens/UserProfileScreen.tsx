@@ -35,7 +35,6 @@ const CurrentLocation = ({locations, selectedDisplay, setDisplay}) => (
           ]}
         >
           {location.location}
-          {location.rarity}
         </Text>
       </TouchableOpacity>
     </View>
@@ -60,7 +59,6 @@ const PastLocations = ({locations}) => {
             ]}
           >
             {location.location}
-            {location.rarity}
           </Text>
         </TouchableOpacity>
       </View>
@@ -72,9 +70,9 @@ const PastLocations = ({locations}) => {
 export default function Profile({ navigation }: RootTabScreenProps<'UserProfile'>) {
   const [selectedDisplay, setDisplay] = useState({});
   const sampleLocations = [{location:"UCLA", rarity:1},
-                            {location:"LACMA", rarity:2},
-                            {location:"Hollywood Sign", rarity:1},
-                            {location:"Griffith Oberservatory", rarity:1}];
+                            {location:"The Last Bookstore", rarity:3},
+                            {location:"Sunken City", rarity:4},
+                            {location:"Walt Disney Concert Hall", rarity:2}];
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={{ alignItems: "flex-start" }}>
@@ -95,21 +93,19 @@ export default function Profile({ navigation }: RootTabScreenProps<'UserProfile'
         <View style={styles.locations}>
           <Text style={styles.subtitle}>Currently Exploring</Text>
           {/*<SafeAreaView style={styles.section}>*/}
-          <Image source={"../assets/images/ucla.png"} style={{height: 120, width: 250, borderRadius: 10}}/>
           <CurrentLocation
               locations={sampleLocations}
               selectedDisplay={selectedDisplay}
               setDisplay={setDisplay}
             ></CurrentLocation>
           {/*</SafeAreaView>*/}
-
-          <View>
-            <Text style={styles.subtitle}>Past Locations</Text>
+        </View>
+          <View style={styles.locations}>
+            <Text style={styles.subtitle}>Past Locations &nbsp; &nbsp; &nbsp; </Text>
             <PastLocations
               locations={sampleLocations}
             ></PastLocations>
           </View>
-        </View>
         </ScrollView>
     </SafeAreaView>
 
@@ -134,7 +130,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    paddingBottom: 3
+    paddingBottom: 10
   },
   username: {
     fontSize: 10,
@@ -153,7 +149,6 @@ const styles = StyleSheet.create({
   },
   locations: {
     paddingLeft: 10,
-    justifyContent: "center",
     alignItems: "center"
   },
   separator: {
@@ -183,7 +178,8 @@ const styles = StyleSheet.create({
     textAlign: "left",
     alignSelf: "flex-start",
     paddingRight: 0,
-    paddingLeft: 0
+    paddingLeft: 0,
+    paddingTop: 0
   },
   profileNameText: {
     fontSize: 20,
@@ -194,34 +190,31 @@ const styles = StyleSheet.create({
   },
   locationButton: {
     borderRadius: 10,
-    borderStyle: "solid",
-    borderColor: "#1F1717",
-    borderWidth: 0.5,
     paddingVertical: 10,
     paddingHorizontal: 10,
     width: 250,
-    height: 100
+    backgroundColor: "#A1B97B",
   },
   locationContainer: {
 
   },
   locationText: {
     fontSize: 16,
-    color: "#1F1717",
     fontWeight: "normal",
-    alignSelf: "center"
+    alignSelf: "center",
+    color: "#FFFFFF"
   },
   column: {
     flexDirection: "column",
     paddingBottom: 15,
     width: 250,
-    height: 120,
-    paddingLeft: 50
-
+    paddingLeft: 50,
+    justifyContent: "center"
   },
   selectedButton: {
     borderWidth: 0.5,
-    backgroundColor: "#FBACAC"
+    backgroundColor: "#FBACAC",
+    alignSelf: "center"
   },
   selectedText: {
     fontWeight: "600",
