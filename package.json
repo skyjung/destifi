@@ -2,17 +2,36 @@
   "name": "app",
   "private": "true",
   "dependencies": {
+    "@babel/preset-react": "^7.16.7",
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^7.1.1",
     "@rails/webpacker": "5.4.3",
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "esbuild": "^0.14.36",
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 2314aca (finished)
+    "prop-types": "^15.8.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-native": "^0.68.1",
+    "react-native-paper": "^4.12.0",
     "webpack": "^4.46.0",
+>>>>>>> 41c5170 (added webpacker)
     "webpack-cli": "^3.3.12"
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "react-native": "^0.68.1"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
+    "build": "esbuild app/assets/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds"
   },
   "devDependencies": {
+    "webpack": "^4.46.0",
     "webpack-dev-server": "^3"
   }
 }

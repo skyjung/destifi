@@ -14,8 +14,12 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import TabOneScreen from '../screens/TabOneScreen';
-import TabTwoScreen from '../screens/TabTwoScreen';
+import HomeScreen from '../screens/HomeScreen';
+import DestifiScreen from "../screens/DestifiScreen";
+import LandingScreen from "../screens/LandingScreen";
+import LoginScreen from "../screens/LoginScreen";
+import SignupScreen from "../screens/SignupScreen";
+import UserProfileScreen from '../screens/UserProfileScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -38,7 +42,10 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+        <Stack.Screen name="Landing" component={LandingScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
@@ -58,16 +65,16 @@ function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}>
       <BottomTab.Screen
-        name="TabOne"
-        component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        name="Home"
+        component={HomeScreen}
+        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+          title: 'Home',
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -85,13 +92,29 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoScreen}
+        name="Destifi"
+        component={DestifiScreen}
         options={{
-          title: 'Tab Two',
+          title: 'Destifi',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
+        <BottomTab.Screen
+            name="UserProfile"
+            component={UserProfileScreen}
+            options={{
+                title: 'Profile',
+                tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+            }}
+        />
+        <BottomTab.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{
+                title: 'Login',
+                tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            }}
+        />
     </BottomTab.Navigator>
   );
 }
