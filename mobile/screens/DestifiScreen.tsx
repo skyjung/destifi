@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {Image, ImageBackground, ScrollView, StyleSheet} from 'react-native';
+import {Image, ImageBackground, ScrollView, SafeAreaView, StyleSheet, StatusBar} from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import {Button, Card, Title, Paragraph} from "react-native-paper";
@@ -10,41 +10,65 @@ export default function DestifiScreen({ navigation }: RootTabScreenProps<'Destif
     const [isVisible, setVisibility] = useState(true);
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Destifi</Text>
-            <View>
+        <SafeAreaView style={styles.container}>
+            <ScrollView contentContainerStyle={{alignItems: "center", justifyContent:"center"}}>
+                <Text style={styles.title}>Destifi - Los Angeles, CA</Text>
                 {generatePlaces({isVisible})}
-            </View>
-            <Text style={styles.title}>generate your destinations:</Text>
-            <Button mode="contained" uppercase={false} onPress={()=>setVisibility(false)}>destifi</Button>
-        </View>
+                <Text style={styles.title}>generate your destinations:</Text>
+                <Button mode="contained" uppercase={false} style={{ width: 80}} onPress={()=>setVisibility(false)}>destifi</Button>
+            </ScrollView>
+        </SafeAreaView>
+
     );
 }
 
 export function generatePlaces({isVisible}){
     return(
         isVisible ? null :
-            <View style={styles.card}>
-                <Card style={{ backgroundColor: '#A1B97B'}}>
+        <SafeAreaView style={styles.container}>
+            <ScrollView contentContainerStyle={{alignItems: "center", justifyContent: "center"}}>
+                <Card style={{ backgroundColor: '#A1B97B', marginTop: 30,}}>
                     <Card.Content>
-                        <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>UCLA</Title>
-                        <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', paddingBottom: 20 }}>Royce Hall: where students go to take basic LinkedIn headshots</Paragraph>
+                        <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>UCLA - College Campus</Title>
+                        <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', paddingBottom: 20 }}>Popular photoshoot spot/building Royce Hall</Paragraph>
                     </Card.Content>
                     <Card.Cover source={require('../assets/images/royce.jpg')} />
                     <Card.Actions>
                         <Button uppercase={false} mode="outlined" >add</Button>
                     </Card.Actions>
                 </Card>
-            </View>
 
+                <Card style={{ backgroundColor: '#A1B97B', marginTop: 30,}}>
+                    <Card.Content>
+                        <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>Joshua Tree National Park</Title>
+                        <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', paddingBottom: 20 }}>Park to hike, stargaze, and explore the desert</Paragraph>
+                    </Card.Content>
+                    <Card.Cover source={require('../assets/images/joshtree.jpg')} />
+                    <Card.Actions>
+                        <Button uppercase={false} mode="outlined" >add</Button>
+                    </Card.Actions>
+                </Card>
+
+                <Card style={{ backgroundColor: '#A1B97B', marginTop: 30, marginBottom: 30}}>
+                    <Card.Content>
+                        <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>The Broad - Art Museum</Title>
+                        <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', paddingBottom: 20 }}>Modern arts museum located in Downtown LA</Paragraph>
+                    </Card.Content>
+                    <Card.Cover source={require('../assets/images/broad.jpg')} />
+                    <Card.Actions>
+                        <Button uppercase={false} mode="outlined" >add</Button>
+                    </Card.Actions>
+                </Card>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        flexGrow: 1,
+        paddingTop: StatusBar.currentHeight,
     },
     title: {
         fontSize: 20,
