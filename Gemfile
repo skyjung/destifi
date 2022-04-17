@@ -45,6 +45,8 @@ gem "bootsnap", require: false
 
 gem 'webpacker'
 
+gem 'pry', '~> 0.13.1'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

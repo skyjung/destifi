@@ -1,13 +1,14 @@
 import React from 'react';
-import { StyleSheet, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import {useState} from "react";
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
+import { Button, Headline } from 'react-native-paper';
 import { RootTabScreenProps } from '../types';
 import { TextInput } from 'react-native-paper';
 
-
-function handleSubmit (userdata) {
+function handleSubmit () {
     console.log('handling submit');
     let response = fetch('http://localhost:3000/signup', {
             method: 'POST',
@@ -16,11 +17,14 @@ function handleSubmit (userdata) {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({userdata}),
-        }).then((data) => {data.json(); console.log(data)});
+            body: JSON.stringify({name: 'Sky Jung', email: 'skyjung@gmail.com', password: 'password', password_confirmation: 'password'}),
+        });
 }
 
-export default function SignupScreen ({ navigation }: RootTabScreenProps<'Signup'>) {
+
+
+export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'>) {
+    const colorScheme = useColorScheme();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -28,27 +32,41 @@ export default function SignupScreen ({ navigation }: RootTabScreenProps<'Signup
 
     return (
         <View style={styles.container}>
-        <Text style={styles.title}>Sign Up</Text>
-        <TextInput label="Name"
-                   placeholder="Full Name"
-                   style={styles.input}
-                   onChangeText={(text) => setName(text)}/>
-        <TextInput label="Email"
-                   placeholder="Email"
-                   style={styles.input}
-                   onChangeText={(text) => setEmail(text)}/>
-        <TextInput label="Password"
-                   secureTextEntry
-                   style={styles.input}
-                   right={<TextInput.Icon name="eye"/>}
-                   onChangeText={(text) => setPassword(text)}/>
-        <TextInput label="Confirm Password"
-                   secureTextEntry
-                   style={styles.input}
-                   right={<TextInput.Icon name="eye"/>}
-                   onChangeText={(text) => setConfPassword(text)}/>
-        <Button title="back" mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
-        <Button title="sign-up" mode="contained" onPress={() => handleSubmit({name})}>Sign Up</Button>
+            <Headline style={styles.title}>sign up</Headline>
+            <View style={styles.input}>
+                <TextInput label="name"
+                           mode='outlined'
+                           outlineColor={Colors[colorScheme].tint}
+                           placeholder="Name"
+                           onChangeText={(text) => setName(text)}/>
+            </View>
+            <View style={styles.input}>
+                <TextInput label="email"
+                           mode='outlined'
+                           outlineColor={Colors[colorScheme].tint}
+                           onChangeText={(text) => setEmail(text)}
+                           placeholder="Email" />
+            </View>
+            <View style={styles.input}>
+                <TextInput label="password"
+                           mode='outlined'
+                           outlineColor={Colors[colorScheme].tint} onChangeText={(text) => setPassword(text)}
+                           secureTextEntry
+                           right={<TextInput.Icon name="eye" />}/>
+            </View>
+            <View style={styles.input}>
+                <TextInput label="confirm password"
+                           mode='outlined'
+                           outlineColor={Colors[colorScheme].tint} onChangeText={(text) => setConfPassword(text)}
+                           secureTextEntry
+                           right={<TextInput.Icon name="eye" />}/>
+            </View>
+            <View style={styles.bottom}>
+                <Button uppercase={false} mode="contained" onPress={() => handleSubmit()}>sign up</Button>
+            </View>
+            <View style={styles.bottom}>
+                <Button uppercase={false} mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
+            </View>
         </View>
     );
 }
@@ -57,20 +75,25 @@ export default function SignupScreen ({ navigation }: RootTabScreenProps<'Signup
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
+        padding: 10,
+        flexDirection: 'column',
     },
     title: {
-        fontSize: 20,
+        fontSize: 35,
         fontWeight: 'bold',
+        padding: 15,
+        textTransform: "none",
     },
     input: {
-        fontSize: 20,
-        height: 40,
-        width: 300,
-        borderRadius: 40,
-        marginTop: 10,
-        padding: 10
-    }
+        height: 75,
+        padding: 10,
+        borderRadius: 5,
+    },
+    bottom : {
+        paddingTop: 25,
+        paddingBottom: 0,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
 });
-

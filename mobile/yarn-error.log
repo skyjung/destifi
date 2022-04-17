@@ -1,20 +1,20 @@
 Arguments: 
-  /Users/skyjung/.nvm/versions/node/v16.14.2/bin/node /opt/homebrew/bin/yarn install
+  /opt/homebrew/Cellar/node/17.3.0/bin/node /opt/homebrew/bin/yarn install
 
 PATH: 
-  /Users/skyjung/.nvm/versions/node/v16.14.2/bin:/Users/skyjung/.rbenv/shims:/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+  /Users/skyjung/.rbenv/shims:/opt/homebrew/bin:/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
 
 Yarn version: 
   1.22.17
 
 Node version: 
-  16.14.2
+  17.3.0
 
 Platform: 
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/skyjung/Desktop/destifi/destifi/package.json: Unexpected string in JSON at position 553
+  SyntaxError: /Users/skyjung/Desktop/destifi/destifi/package.json: Unexpected token } in JSON at position 522
       at JSON.parse (<anonymous>)
       at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
