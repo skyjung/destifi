@@ -15,8 +15,8 @@ export default function DestifiScreen({ navigation }: RootTabScreenProps<'Destif
             <View>
                 {generatePlaces({isVisible})}
             </View>
-            <Button mode="contained" uppercase={false} onPress={()=>setVisibility(false)}>generate</Button>
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            <Text style={styles.title}>generate your destinations:</Text>
+            <Button mode="contained" uppercase={false} onPress={()=>setVisibility(false)}>destifi</Button>
         </View>
     );
 }
@@ -25,14 +25,14 @@ export function generatePlaces({isVisible}){
     return(
         isVisible ? null :
             <View style={styles.card}>
-                <Card>
+                <Card style={{ backgroundColor: '#A1B97B'}}>
                     <Card.Content>
-                        <Title>UCLA</Title>
-                        <Paragraph>royce hall: where students go to take basic linkedin headshots</Paragraph>
+                        <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>UCLA</Title>
+                        <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', paddingBottom: 20 }}>Royce Hall: where students go to take basic LinkedIn headshots</Paragraph>
                     </Card.Content>
                     <Card.Cover source={require('../assets/images/royce.jpg')} />
                     <Card.Actions>
-                        <Button>add</Button>
+                        <Button uppercase={false} mode="outlined" >add</Button>
                     </Card.Actions>
                 </Card>
             </View>
@@ -54,8 +54,6 @@ const styles = StyleSheet.create({
         width: 300,
         height: 200,
         borderRadius: 10,
-        fontSize: 10,
-        fontWeight: 'bold',
     },
     separator: {
         marginVertical: 30,
