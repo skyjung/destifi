@@ -11,14 +11,21 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Log In</Text>
-            <TextInput style={styles.input} label="Username"
-                       placeholder="Username" />
+            <View style={styles.input}>
+                <TextInput style={styles.input} label="Username"
+                           placeholder="Username" />
+            </View>
+            <View style={styles.input}>
             <TextInput style={styles.input} label="Password"
                        secureTextEntry
                        right={<TextInput.Icon name="eye" />}/>
-            <Button mode="contained" onPress={() => navigation.navigate("Home")}>log in</Button>
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-            <EditScreenInfo path="/screens/LoginScreen.tsx" />
+            </View>
+                <View style={styles.input}>
+                    <Button mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
+                </View>
+                <View style={styles.input}>
+                    <Button mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
+                </View>
         </View>
     );
 }
@@ -27,22 +34,25 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
+        padding: 10,
     },
     input: {
-        //flex: 1,
         alignItems: 'flex-start',
-        width: 300,
-        height: 40,
+        width: '100%',
+        height: 75,
+        padding: 10,
     },
     title: {
-        fontSize: 20,
+        fontSize: 35,
         fontWeight: 'bold',
+        padding: 15,
     },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
+    end: {
+        maxWidth: '100%',
+        padding: 10,
+        textAlign: 'auto',
+        alignItems: 'flex-start',
+        flexDirection: 'row',
     },
 });

@@ -21,8 +21,14 @@ export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'
             <TextInput label="Confirm Password"
                        secureTextEntry
                        right={<TextInput.Icon name="eye" />}/>
-            <Button mode="contained" onPress={() => navigation.navigate("Root", { screen: "Home"})}>sign up</Button>
-            <EditScreenInfo path="/screens/SignupScreen.tsx" />
+            <View style={styles.end}>
+                <View style={styles.input}>
+                    <Button mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
+                </View>
+                <View style={styles.input}>
+                    <Button mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
+                </View>
+            </View>
         </View>
     );
 }
@@ -32,7 +38,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        width: '70%',
         justifyContent: 'center',
     },
     title: {
@@ -43,5 +48,9 @@ const styles = StyleSheet.create({
         marginVertical: 30,
         height: 1,
         width: '80%',
+    },
+    end: {
+        alignItems: 'flex-end',
+        flexDirection: 'row',
     },
 });
