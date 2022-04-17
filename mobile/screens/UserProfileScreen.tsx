@@ -91,23 +91,26 @@ export default function Profile({ navigation }: RootTabScreenProps<'UserProfile'
             </View>
           </View>
         </View>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <Text style={styles.subtitle}>Currently Exploring</Text>
-        {/*<SafeAreaView style={styles.section}>*/}
+        <View style={styles.separator} lightuclColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+        <View style={styles.locations}>
+          <Text style={styles.subtitle}>Currently Exploring</Text>
+          {/*<SafeAreaView style={styles.section}>*/}
+          <Image source={"../assets/images/ucla.png"} style={{height: 120, width: 250, borderRadius: 10}}/>
           <CurrentLocation
-            locations={sampleLocations}
-            selectedDisplay={selectedDisplay}
-            setDisplay={setDisplay}
-          ></CurrentLocation>
-        {/*</SafeAreaView>*/}
+              locations={sampleLocations}
+              selectedDisplay={selectedDisplay}
+              setDisplay={setDisplay}
+            ></CurrentLocation>
+          {/*</SafeAreaView>*/}
 
-        <View>
-          <Text style={styles.subtitle}>Past Locations</Text>
-          <PastLocations
-            locations={sampleLocations}
-          ></PastLocations>
+          <View>
+            <Text style={styles.subtitle}>Past Locations</Text>
+            <PastLocations
+              locations={sampleLocations}
+            ></PastLocations>
+          </View>
         </View>
-      </ScrollView>
+        </ScrollView>
     </SafeAreaView>
 
   );
@@ -117,7 +120,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexGrow: 1,
-    paddingTop: StatusBar.currentHeight
+    paddingTop: StatusBar.currentHeight,
+    backgroundColor: "#FFF5ED"
   },
   section: {
     flex: 1,
@@ -128,8 +132,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
+    paddingBottom: 3
   },
   username: {
     fontSize: 10,
@@ -145,6 +150,11 @@ const styles = StyleSheet.create({
     width: 120,
     height: 50,
     resizeMode: "contain"
+  },
+  locations: {
+    paddingLeft: 10,
+    justifyContent: "center",
+    alignItems: "center"
   },
   separator: {
     marginTop: 10,
@@ -189,7 +199,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     paddingVertical: 10,
     paddingHorizontal: 10,
-    width: 100
+    width: 250,
+    height: 100
   },
   locationContainer: {
 
@@ -203,7 +214,10 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: "column",
     paddingBottom: 15,
-    width: '55%'
+    width: 250,
+    height: 120,
+    paddingLeft: 50
+
   },
   selectedButton: {
     borderWidth: 0.5,
