@@ -9,8 +9,6 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'TabOne'>)
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Destifi</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
     </View>
   );
 }
