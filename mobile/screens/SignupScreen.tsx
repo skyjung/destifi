@@ -10,9 +10,11 @@ import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 
 async function handleSubmit (data) {
+    const token = document.querySelector('meta[name="csrf-token"]').content;
     console.log('handling submit');
     await axios.post("http://localhost:3000/users", (data), {
         headers: {
+            "X-CSRF-Token": token,
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         }
