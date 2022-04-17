@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
+  def index
+    @user = User.all
+  end
   def show
     @user = User.find(params[:id])
   end
@@ -9,13 +12,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
-      reset_session
-      log_in @user
-      redirect_to @user
-    else
-      render 'new'
+      #   reset_session
+      #   log_in @user
+       redirect_to 'http://localhost:19006'
+    # else
+    #   render 'new'
     end
   end
 
