@@ -47,14 +47,14 @@ export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'
                 <TextInput label="password"
                            mode='outlined'
                            outlineColor={Colors[colorScheme].tint} onChangeText={(text) => setPassword(text)}
-                           //secureTextEntry
+                           secureTextEntry
                            right={<TextInput.Icon name="eye" />}/>
             </View>
             <View style={styles.input}>
                 <TextInput label="confirm password"
                            mode='outlined'
                            outlineColor={Colors[colorScheme].tint} onChangeText={(text) => setConfPassword(text)}
-                           //secureTextEntry
+                           secureTextEntry
                            right={<TextInput.Icon name="eye" />}/>
             </View>
             <View style={styles.bottom}>
