@@ -15,10 +15,10 @@ export default function DestifiScreen({ navigation }: RootTabScreenProps<'Destif
                 <Text style={styles.title}>Destifi - Los Angeles, CA</Text>
                 {generatePlaces({isVisible})}
                 <Text style={styles.title}>generate your destinations:</Text>
-                <Button mode="contained" uppercase={false} style={{ width: '50%', marginBottom: 40,}} onPress={()=>setVisibility(false)}>destifi</Button>
+                <Button mode="contained" uppercase={false} style={{ width: '50%', marginBottom: 25,}} onPress={()=>setVisibility(false)}>destifi</Button>
+                <Text style={{marginBottom: 40, fontSize: 14}}>24 hours until your next roll:</Text>
             </ScrollView>
         </SafeAreaView>
-
     );
 }
 
