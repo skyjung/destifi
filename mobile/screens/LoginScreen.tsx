@@ -16,9 +16,8 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
             <TextInput style={styles.input} label="Password"
                        secureTextEntry
                        right={<TextInput.Icon name="eye" />}/>
-            <Button mode="contained" onPress={() => navigation.navigate("Home")}>log in</Button>
+            <Button mode="contained" onPress={() => navigation.navigate("Root", { screen: "Home"})}>Log in</Button>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-            <EditScreenInfo path="/screens/LoginScreen.tsx" />
         </View>
     );
 }

@@ -1,16 +1,15 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
+import {Button} from "react-native-paper";
 
-export default function DestifiScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+export default function DestifiScreen({ navigation }: RootTabScreenProps<'Destifi'>) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Destifi</Text>
+      <Button mode="contained" onPress={() => navigation.navigate("Login")}>generate</Button>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/HomeScreen.tsx" />
     </View>
   );
 }
