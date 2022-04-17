@@ -12,15 +12,15 @@ class UsersController < ApplicationController
   end
 
   def create
-
-    @user = User.new(params[:user])
-    # if @user.save
-    #   #reset_session
-    #   #log_in @user
-    #   #redirect_to @user
+    @user = User.create(params[:user].permit(:name, :email, :password, :password_confirmation))
+    binding.pry
+    if @user.save
+      #   reset_session
+      #   log_in @user
+       redirect_to 'http://localhost:19006'
     # else
     #   render 'new'
-    # end
+    end
   end
 
   private
