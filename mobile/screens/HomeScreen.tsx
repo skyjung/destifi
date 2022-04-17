@@ -26,7 +26,9 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
         <Image style={styles.card} source={require('../assets/images/uclamap.png')}></Image>
         <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', padding: 20 }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim curabitur turpis at massa, mollis volutpat, neque mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim curabitur turpis at massa, mollis volutpat, neque mauris.
         </Paragraph>
+        <Button mode="contained" uppercase={false} style={{ width: '50%', marginBottom: 25,}} onPress={()=>(navigation.navigate('Modal'))}>visited</Button>
       </View>
+
     </ScrollView>
   </SafeAreaView>
   );

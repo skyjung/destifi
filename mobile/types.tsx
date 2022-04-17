@@ -34,6 +34,7 @@ export type RootTabParamList = {
     Landing: undefined;
     Login: undefined;
     Signup: undefined;
+    Modal: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<

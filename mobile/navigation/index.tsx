@@ -48,7 +48,7 @@ function RootNavigator() {
         <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="Modal" component={ModalScreen} options={{ headerShown: false }}/>
       </Stack.Group>
     </Stack.Navigator>
   );
@@ -98,7 +98,7 @@ function BottomTabNavigator() {
         component={DestifiScreen}
         options={{
           // title: 'Destifi',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="location-arrow" color={color} />,
         }}
       />
         <BottomTab.Screen
