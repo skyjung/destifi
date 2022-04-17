@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexGrow: 1,
         paddingTop: StatusBar.currentHeight,
-
+        backgroundColor: "#FFF5ED"
     },
     title: {
         padding: 20,

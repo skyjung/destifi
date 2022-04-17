@@ -1,19 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Image } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { RootTabScreenProps } from '../types';
+import { Paragraph, Headline, Button } from 'react-native-paper';
 
-export default function ModalScreen() {
+export default function ModalScreen({ navigation }: RootTabScreenProps<'Modal'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ModalScreen.tsx" />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <Headline style={styles.title}>congratulations! you've earned a souvenir</Headline>
+      <Image style={{padding: 20}} source={require('../assets/images/planecoin.png')}/>
+      <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', padding: 20 }}>this is a rare souvenir found at UCLA</Paragraph>
+      <Button mode="contained" uppercase={false} style={{ width: '50%', margin: 25,}} onPress={()=>(navigation.navigate('UserProfile'))}>go to profile</Button>
     </View>
   );
 }
@@ -21,16 +21,14 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    textAlign: 'center',
+    padding: 10,
   },
 });
