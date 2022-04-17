@@ -15,7 +15,7 @@ export default function DestifiScreen({ navigation }: RootTabScreenProps<'Destif
                 <Text style={styles.title}>Destifi - Los Angeles, CA</Text>
                 {generatePlaces({isVisible})}
                 <Text style={styles.title}>generate your destinations:</Text>
-                <Button mode="contained" uppercase={false} style={{ width: 80}} onPress={()=>setVisibility(false)}>destifi</Button>
+                <Button mode="contained" uppercase={false} style={{ width: '50%', marginBottom: 40,}} onPress={()=>setVisibility(false)}>destifi</Button>
             </ScrollView>
         </SafeAreaView>
 
@@ -26,7 +26,7 @@ export function generatePlaces({isVisible}){
     return(
         isVisible ? null :
         <SafeAreaView style={styles.container}>
-            <ScrollView contentContainerStyle={{alignItems: "center", justifyContent: "center"}}>
+            <ScrollView>
                 <Card style={{ backgroundColor: '#A1B97B', marginTop: 30,}}>
                     <Card.Content>
                         <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>UCLA - College Campus</Title>
@@ -49,7 +49,7 @@ export function generatePlaces({isVisible}){
                     </Card.Actions>
                 </Card>
 
-                <Card style={{ backgroundColor: '#A1B97B', marginTop: 30, marginBottom: 30}}>
+               <Card style={{ backgroundColor: '#A1B97B', marginTop: 30, marginBottom: 30}}>
                     <Card.Content>
                         <Title style={{ color: '#3E3E3E', fontFamily: 'Poppins', fontWeight: 'ExtraBold' }}>The Broad - Art Museum</Title>
                         <Paragraph style={{ color: '#3E3E3E', fontFamily: 'Poppins', paddingBottom: 20 }}>Modern arts museum located in Downtown LA</Paragraph>
@@ -69,8 +69,10 @@ const styles = StyleSheet.create({
         flex: 1,
         flexGrow: 1,
         paddingTop: StatusBar.currentHeight,
+
     },
     title: {
+        padding: 20,
         fontSize: 20,
         fontWeight: 'bold',
     },
