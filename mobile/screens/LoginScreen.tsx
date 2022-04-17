@@ -3,22 +3,37 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import { Button } from 'react-native-paper';
+import { Button, Headline } from 'react-native-paper';
 import { RootTabScreenProps } from '../types';
 import { TextInput } from 'react-native-paper';
+import Colors from '../constants/Colors';
+import useColorScheme from '../hooks/useColorScheme';
 
 export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>) {
+    const colorScheme = useColorScheme();
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Log In</Text>
-            <TextInput style={styles.input} label="Username"
-                       placeholder="Username" />
-            <TextInput style={styles.input} label="Password"
-                       secureTextEntry
-                       right={<TextInput.Icon name="eye" />}/>
-            <Button mode="contained" onPress={() => navigation.navigate("Home")}>log in</Button>
-            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-            <EditScreenInfo path="/screens/LoginScreen.tsx" />
+            <Headline style={styles.title}>log in</Headline>
+            <View style={styles.input}>
+                <TextInput label="username"
+                           mode='outlined'
+                           outlineColor={Colors[colorScheme].tint}
+                           placeholder="username" />
+            </View>
+            <View style={styles.input}>
+                <TextInput label="password"
+                           mode='outlined'
+                           outlineColor={Colors[colorScheme].tint}
+                           secureTextEntry
+                           right={<TextInput.Icon name="eye" />}/>
+            </View>
+            <View style={styles.bottom}>
+                <Button uppercase={false} mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
+            </View>
+            <View style={styles.bottom}>
+                <Button uppercase={false} mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
+            </View>
         </View>
     );
 }
@@ -27,22 +42,23 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
-    },
-    input: {
-        //flex: 1,
-        alignItems: 'flex-start',
-        width: 300,
-        height: 40,
+        padding: 10,
+        flexDirection: 'column',
     },
     title: {
-        fontSize: 20,
+        fontSize: 35,
         fontWeight: 'bold',
+        padding: 15,
     },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
+    input: {
+        height: 75,
+        padding: 10,
+    },
+    bottom : {
+        paddingTop: 25,
+        paddingBottom: 0,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 });
