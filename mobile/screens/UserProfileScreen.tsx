@@ -1,10 +1,13 @@
-import { StyleSheet, TouchableOpacity, ScrollView, StatusBar, SafeAreaView } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, StatusBar, SafeAreaView, Image } from 'react-native';
 import { useState } from 'react';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import ProfilePic from "../components/ProfilePic";
+import Carousel from "../components/Carousel";
 // @ts-ignore
 import sample from "../assets/images/nathan.jpg";
+// @ts-ignore
+import desticoins from "../assets/images/desticoins.png";
 
 // @ts-ignore
 const ProfileName = ({ onPress, name }) => (
@@ -15,24 +18,24 @@ const ProfileName = ({ onPress, name }) => (
 
 // @ts-ignore
 const CurrentLocation = ({locations, selectedDisplay, setDisplay}) => (
-  locations.map(([location, rarity]) => (
+  locations.map((location) => (
     <View style={styles.column}>
       <TouchableOpacity
-        key={location}
-        onFocus={() => setDisplay({[location]:rarity})}
+        key={location.location}
+        onFocus={() => setDisplay({location})}
         style={[
           styles.locationButton,
-          selectedDisplay === location && styles.selectedButton,
+          selectedDisplay === {location} && styles.selectedButton,
         ]}
       >
         <Text
           style={[
             styles.locationText,
-            selectedDisplay === location && styles.selectedButton,
+            selectedDisplay === {location} && styles.selectedButton,
           ]}
         >
-          {location}
-          {rarity}
+          {location.location}
+          {location.rarity}
         </Text>
       </TouchableOpacity>
     </View>
@@ -43,10 +46,10 @@ const CurrentLocation = ({locations, selectedDisplay, setDisplay}) => (
 const PastLocations = ({locations}) => {
   // @ts-ignore
   return (
-    locations.map(([location, rarity]) => (
+    locations.map((location) => (
       <View style={styles.column}>
         <TouchableOpacity
-          key={location}
+          key={location.location}
           style={[
             styles.locationButton
           ]}
@@ -56,8 +59,8 @@ const PastLocations = ({locations}) => {
               styles.locationText,
             ]}
           >
-            {location}
-            {rarity}
+            {location.location}
+            {location.rarity}
           </Text>
         </TouchableOpacity>
       </View>
@@ -67,26 +70,43 @@ const PastLocations = ({locations}) => {
 
 
 export default function Profile({ navigation }: RootTabScreenProps<'UserProfile'>) {
-  const [selectedDisplay, setDisplay] = useState({"":0});
-  const sampleLocations = {"UCLA":1, "LACMA":1, "Hollywood Sign":2, "Griffith Observatory":2, "USC":3};
+  const [selectedDisplay, setDisplay] = useState({});
+  const sampleLocations = [{location:"UCLA", rarity:1},
+                            {location:"LACMA", rarity:2},
+                            {location:"Hollywood Sign", rarity:1},
+                            {location:"Griffith Oberservatory", rarity:1}];
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={{ alignItems: "center", justifyContent: 'center' }}>
-        {/*<Text style={styles.title}>Sky Jung</Text>*/}
+      <ScrollView contentContainerStyle={{ alignItems: "flex-start" }}>
         <View style={styles.profileContainer}>
-          <ProfilePic source={sample}></ProfilePic>
-          <ProfileName name="Nathan Zhang" onPress={()=>{}}/>
-          <Text style={styles.username}>@nathan.zhang</Text>
+          <View style={styles.profileLeftContainer}>
+            <ProfilePic source={sample}></ProfilePic>
+            <Text style={styles.username}>@nathan.zhang</Text>
+          </View>
+          <View style={styles.profileNameContainer}>
+            <ProfileName name="Nathan Zhang" onPress={()=>{}}/>
+            <Text style={styles.traveltitle}>Certified Traveler</Text>
+            <View style={{alignItems:"flex-start"}}>
+              <Image style={styles.desticoins} source={desticoins}></Image>
+            </View>
+          </View>
         </View>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <CurrentLocation
-        locations={{"Melrose Ave.": 1, "Getty Villa": 2, "The Grove": 3}}
-        selectedDisplay={selectedDisplay}
-        setDisplay={setDisplay}
-        ></CurrentLocation>
-        <PastLocations
-          locations={sampleLocations}
-        ></PastLocations>
+        <Text style={styles.subtitle}>Currently Exploring</Text>
+        {/*<SafeAreaView style={styles.section}>*/}
+          <CurrentLocation
+            locations={sampleLocations}
+            selectedDisplay={selectedDisplay}
+            setDisplay={setDisplay}
+          ></CurrentLocation>
+        {/*</SafeAreaView>*/}
+
+        <View>
+          <Text style={styles.subtitle}>Past Locations</Text>
+          <PastLocations
+            locations={sampleLocations}
+          ></PastLocations>
+        </View>
       </ScrollView>
     </SafeAreaView>
 
@@ -97,17 +117,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexGrow: 1,
-    backgroundColor: "white",
-    paddingTop: StatusBar.currentHeight,
+    paddingTop: StatusBar.currentHeight
+  },
+  section: {
+    flex: 1,
+    flexGrow:1,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
   },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   username: {
     fontSize: 10,
-    paddingTop: 10,
-    alignSelf: "center"
+    alignSelf: "flex-start",
+    marginLeft: 10,
+  },
+  traveltitle: {
+    fontSize: 14,
+  },
+  desticoins: {
+    paddingBottom: 40,
+    alignSelf: "flex-start",
+    width: 120,
+    height: 50,
+    resizeMode: "contain"
   },
   separator: {
     marginTop: 10,
@@ -116,24 +153,34 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   profileContainer: {
-    paddingTop: 40
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingTop: 40,
+    alignSelf: "flex-start",
+  },
+  profileLeftContainer: {
+    flexDirection: 'column',
+    flex: 1,
+    textAlign: "left",
+    paddingLeft: 40,
+    paddingRight: 0,
+    maxWidth:180
   },
   profileNameContainer: {
-    borderRadius: 15,
-    borderStyle: "solid",
-    borderColor: "#1F1717",
-    borderWidth: 0.5,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    alignSelf: 'center',
-    width: '75%'
+    flexDirection: 'column',
+    flex: 1,
+    textAlign: "left",
+    alignSelf: "flex-start",
+    paddingRight: 0,
+    paddingLeft: 0
   },
   profileNameText: {
     fontSize: 20,
     color: "#1F1717",
-    fontWeight: "600",
-    alignSelf: "center",
-    textTransform: "capitalize"
+    fontWeight: "800",
+    textTransform: "capitalize",
+    paddingTop: 30,
   },
   locationButton: {
     borderRadius: 10,
@@ -141,8 +188,8 @@ const styles = StyleSheet.create({
     borderColor: "#1F1717",
     borderWidth: 0.5,
     paddingVertical: 10,
-    paddingHorizontal: 30,
-    width: '100%'
+    paddingHorizontal: 10,
+    width: 100
   },
   locationContainer: {
 
