@@ -10,24 +10,30 @@ import { TextInput } from 'react-native-paper';
 export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'>) {
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Log In</Text>
-            <TextInput label="Email"
-                       placeholder="Email" />
-            <TextInput label="Username"
-                       placeholder="Username" />
-            <TextInput label="Password"
-                       secureTextEntry
-                       right={<TextInput.Icon name="eye" />}/>
-            <TextInput label="Confirm Password"
-                       secureTextEntry
-                       right={<TextInput.Icon name="eye" />}/>
-            <View style={styles.end}>
-                <View style={styles.input}>
-                    <Button mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
-                </View>
-                <View style={styles.input}>
-                    <Button mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
-                </View>
+            <Text style={styles.title}>Sign Up</Text>
+            <View style={styles.input}>
+                <TextInput label="Email"
+                           placeholder="Email" />
+            </View>
+            <View style={styles.input}>
+                <TextInput label="Username"
+                           placeholder="Username" />
+            </View>
+            <View style={styles.input}>
+                <TextInput label="Password"
+                           secureTextEntry
+                           right={<TextInput.Icon name="eye" />}/>
+            </View>
+            <View style={styles.input}>
+                <TextInput label="Confirm Password"
+                           secureTextEntry
+                           right={<TextInput.Icon name="eye" />}/>
+            </View>
+            <View style={styles.bottom}>
+                <Button mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
+            </View>
+            <View style={styles.bottom}>
+                <Button mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
             </View>
         </View>
     );
@@ -37,20 +43,23 @@ export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
+        padding: 10,
+        flexDirection: 'column',
     },
     title: {
-        fontSize: 20,
+        fontSize: 35,
         fontWeight: 'bold',
+        padding: 15,
     },
-    separator: {
-        marginVertical: 30,
-        height: 1,
-        width: '80%',
+    input: {
+        height: 75,
+        padding: 10,
     },
-    end: {
-        alignItems: 'flex-end',
-        flexDirection: 'row',
+    bottom : {
+        paddingTop: 25,
+        paddingBottom: 0,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 });

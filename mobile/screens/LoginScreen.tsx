@@ -12,20 +12,20 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
         <View style={styles.container}>
             <Text style={styles.title}>Log In</Text>
             <View style={styles.input}>
-                <TextInput style={styles.input} label="Username"
+                <TextInput label="Username"
                            placeholder="Username" />
             </View>
             <View style={styles.input}>
-            <TextInput style={styles.input} label="Password"
-                       secureTextEntry
-                       right={<TextInput.Icon name="eye" />}/>
+                <TextInput label="Password"
+                           secureTextEntry
+                           right={<TextInput.Icon name="eye" />}/>
             </View>
-                <View style={styles.input}>
-                    <Button mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
-                </View>
-                <View style={styles.input}>
-                    <Button mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
-                </View>
+            <View style={styles.bottom}>
+                <Button mode="contained" onPress={() => navigation.navigate("Root", { screen : "Home" })}>log in</Button>
+            </View>
+            <View style={styles.bottom}>
+                <Button mode="outlined" onPress={() => navigation.navigate("Landing")}>back</Button>
+            </View>
         </View>
     );
 }
@@ -36,23 +36,21 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         padding: 10,
-    },
-    input: {
-        alignItems: 'flex-start',
-        width: '100%',
-        height: 75,
-        padding: 10,
+        flexDirection: 'column',
     },
     title: {
         fontSize: 35,
         fontWeight: 'bold',
         padding: 15,
     },
-    end: {
-        maxWidth: '100%',
+    input: {
+        height: 75,
         padding: 10,
-        textAlign: 'auto',
-        alignItems: 'flex-start',
-        flexDirection: 'row',
+    },
+    bottom : {
+        paddingTop: 25,
+        paddingBottom: 0,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
 });
