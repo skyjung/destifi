@@ -14,14 +14,15 @@ import ReactOnRails from 'react-on-rails'
 
 async function handleSubmit(data, navigation) {
     console.log('logging in');
-    let csrfToken = ReactOnRails.authenticityToken() || false;
+    //let csrfToken = ReactOnRails.authenticityToken() || false;
+    navigation.navigate("Root", { screen : "Home" });
     await axios.post("http://localhost:3000/login", (data), {
        headers: {
-           'X-CSRF-Token': csrfToken,
+           //'X-CSRF-Token': csrfToken,
            'Access-Control-Allow-Origin': '*',
            'Content-Type': 'application/json'
        }
-    }).then(() => navigation.navigate("Root", { screen : "Home" }));
+    })
 }
 
 export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>) {
