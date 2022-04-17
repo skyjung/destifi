@@ -14,11 +14,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      #   reset_session
-      #   log_in @user
-       redirect_to 'http://localhost:19006'
-    # else
-    #   render 'new'
+      reset_session
+      log_in @user
+    else
+      redirect_to 'http://localhost:19006/signup'
     end
   end
 
