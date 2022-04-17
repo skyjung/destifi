@@ -10,9 +10,13 @@ export default function LandingScreen({ navigation }: RootTabScreenProps<'Landin
 
     return (
         <View style={styles.container}>
-            <Headline>Destifi</Headline>
-            <Button mode="contained" onPress={() => navigation.navigate("Login")}>log in</Button>
-            <Button mode="text" onPress={() => navigation.navigate("Signup")}>sign up</Button>
+            <Headline style={styles.title}>Destifi</Headline>
+            <View style={styles.input}>
+                <Button mode="contained" onPress={() => navigation.navigate("Login")}>log in</Button>
+            </View>
+            <View style={styles.input}>
+                <Button mode="text" onPress={() => navigation.navigate("Signup")}>sign up</Button>
+            </View>
         </View>
     );
 }
@@ -23,9 +27,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    input: {
+        //flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 'auto',
+        height: 'auto',
+        padding: 10,
+    },
     title: {
-        fontSize: 20,
+        fontSize: 35,
         fontWeight: 'bold',
+        padding: 15,
     },
     separator: {
         marginVertical: 30,
