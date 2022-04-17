@@ -9,9 +9,8 @@ import { RootTabScreenProps } from '../types';
 import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 
-async function handleSubmit () {
+async function handleSubmit (data) {
     console.log('handling submit');
-    let data = {name: "Test test", email: "test@gmail.com", password: "password", password_confirmation: "password"};
     await axios.post("http://localhost:3000/users", (data), {
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -60,7 +59,7 @@ export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'
             </View>
             <View style={styles.bottom}>
                 <Button uppercase={false} mode="contained" onPress={() => handleSubmit(
-                    //{name: "Test test", email: "test@gmail.com", password: "password", password_confirmation: "password"}
+                    {user: {name: name, email: email, password: password, password_confirmation: password_confirmation}}
                 )}>sign up</Button>
             </View>
             <View style={styles.bottom}>

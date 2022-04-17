@@ -12,8 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params[:user].permit(:name, :email, :password, :password_confirmation))
-    binding.pry
+    @user = User.create(user_params)
     if @user.save
       #   reset_session
       #   log_in @user
