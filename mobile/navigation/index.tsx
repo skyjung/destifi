@@ -73,8 +73,9 @@ function BottomTabNavigator() {
         name="Home"
         component={HomeScreen}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          title: 'Home',
+          // title: 'Home',
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+        /*
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate('Modal')}
@@ -89,13 +90,14 @@ function BottomTabNavigator() {
               />
             </Pressable>
           ),
+           */
         })}
       />
       <BottomTab.Screen
         name="Destifi"
         component={DestifiScreen}
         options={{
-          title: 'Destifi',
+          // title: 'Destifi',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
@@ -103,7 +105,7 @@ function BottomTabNavigator() {
             name="UserProfile"
             component={UserProfileScreen}
             options={{
-                title: 'Profile',
+                // title: 'Profile',
                 tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
             }}
         />
