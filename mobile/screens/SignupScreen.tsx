@@ -10,9 +10,11 @@ import { TextInput } from 'react-native-paper';
 import axios from 'axios';
 
 async function handleSubmit (data) {
+    const token = document.querySelector('meta[name="csrf-token"]').content;
     console.log('handling submit');
     await axios.post("http://localhost:3000/users", (data), {
         headers: {
+            "X-CSRF-Token": token,
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         }
@@ -47,14 +49,14 @@ export default function SignupScreen({ navigation }: RootTabScreenProps<'Signup'
                 <TextInput label="password"
                            mode='outlined'
                            outlineColor={Colors[colorScheme].tint} onChangeText={(text) => setPassword(text)}
-                           //secureTextEntry
+                           secureTextEntry
                            right={<TextInput.Icon name="eye" />}/>
             </View>
             <View style={styles.input}>
                 <TextInput label="confirm password"
                            mode='outlined'
                            outlineColor={Colors[colorScheme].tint} onChangeText={(text) => setConfPassword(text)}
-                           //secureTextEntry
+                           secureTextEntry
                            right={<TextInput.Icon name="eye" />}/>
             </View>
             <View style={styles.bottom}>
